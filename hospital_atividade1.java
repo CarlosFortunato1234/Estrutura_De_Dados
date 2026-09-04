@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class hospital {
+public class hospital_atividade1 {
     public static void main (String[] args) {
         //arraylist que criei para armazenar objeto do tipo paciente
     ArrayList <Paciente> pacientes = new ArrayList<>();
