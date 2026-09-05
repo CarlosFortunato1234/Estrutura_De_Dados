@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 public class Atividade1EstruturaDeDados {
     public static void main (String[] args) {
-        //arraylist que criei para armazenar objeto do tipo paciente
+        //array que criei para armazenar objeto do tipo paciente
     Paciente[] pacientes = new Paciente [10];
     int quantidade = 0; 
     Scanner Entradauser = new Scanner (System.in);
