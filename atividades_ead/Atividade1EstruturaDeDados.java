@@ -14,7 +14,7 @@ public class Atividade1EstruturaDeDados {
     int quantidade = 0; 
     Scanner Entradauser = new Scanner (System.in);
     boolean continuar = true; //isso é para o while continuar o programa ou não! 
-
+// inicio do menu
     System.out.println("Bem vindo ao programa de controle de pacientes!");
 
     while (continuar){
