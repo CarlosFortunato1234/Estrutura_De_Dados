@@ -5,20 +5,19 @@ import java.util.Scanner;
 public class MinhaLanchonete {
     public static void main(String[] args) {
         Scanner teclado = new Scanner(System.in);
-        FilaPedidos fila = new FilaPedidos();
+        FilaPedidos fila = new FilaPedidos(); //cria a fila de pedidos (com a classe que fiz)
         int numeroPedido = 1;
         int opcao = -1;
-
-
 
         do {
             System.out.println( "---------- PEDIDOS DA LANCHONETE ----------");
             System.out.println("1 - Novo Pedido: ");
             System.out.println("2 - Atender pedido mais antigo: ");
             System.out.println("3 - Ver fila dos pedidos: ");
-            System.out.println("4 - Ver próximo pedido (sem atender): ");
+            System.out.println("4 - Ver proximo pedido (sem atender): ");
+            System.out.println("5 - Cancelar pedido: ");
             System.out.println("0 - Sair: ");
-            System.out.println("Opção: ");
+            System.out.println("Opcao: ");
 
 
             //try catch para que se o usuário digitar uma letra, o programa não
@@ -49,7 +48,7 @@ public class MinhaLanchonete {
                         int quantidade = teclado.nextInt();
                         teclado.nextLine();
                         if (quantidade <= 0){
-                            System.out.println("A quantidade deve ser menor que zero!");
+                            System.out.println("A quantidade deve ser maior que zero!");
                         } else {
                             String bebida = "";
                             System.out.println("Deseja bebida? (s/n): ");
@@ -74,7 +73,7 @@ public class MinhaLanchonete {
                             Pedido novo = new Pedido (numeroPedido, lanche, quantidade, bebida, observacao);
                             fila.enqueue(novo); //insere no final da fila
                             System.out.println("Pedido nº " + numeroPedido + " Entrou na fila.");
-                            numeroPedido++;
+                            numeroPedido++; // soma 1 pro próximo pedido ter outro número
                         }
                     } catch (InputMismatchException e) { 
                         System.out.println("ERRO: a quantidade deve ser um número inteiro");
@@ -85,7 +84,7 @@ public class MinhaLanchonete {
 
                  case 2:
                 
-                    Pedido atendido = fila.dequeue(); // remove o inicio da fila
+                    Pedido atendido = fila.dequeue(); // remove o primeiro da fila
                     if (atendido == null) {
 
                         System.out.println("Não há pedidos para atender.");
@@ -101,8 +100,8 @@ public class MinhaLanchonete {
                  break;
 
 
-
-                 case 4: 
+ 
+                 case 4: // VER O PRÓXIMO SEM TIRAR (peek)
                  
                  Pedido proximo = fila.peek(); //consulta sem remover
 
@@ -114,9 +113,30 @@ public class MinhaLanchonete {
                  }
                  break;
 
+                 case 5: 
+
+
+                System.out.println("Digite o número do pedido que deseja cancelar:  ");
+                try {
+                    int numeroCancelar = teclado.nextInt();
+                    teclado.nextLine(); //limpar o enter
+
+                    if (fila.cancelar(numeroCancelar)) {
+                        System.out.println("Pedido nº " + numeroCancelar + " cancelado.");
+                } else {
+                     System.out.println("Esse pedido não está na fila! ");
+                } 
+                } catch (InputMismatchException e) {
+                     System.out.println("ERRO! DIGITE APENAS NÚMEROS: ");{
+                        teclado.nextLine();
+                     }
+                     
+                } 
+                break; 
 
                  case 0: 
                  System.out.println("ENCERRANDO O PROGRAMA..");
+                 break;
 
 
                  default: 
